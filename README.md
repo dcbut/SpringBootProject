@@ -5,6 +5,9 @@
 - springboot_01_frist : SpringBooot项目入门案例
 - springboot_01_second : SpringBooot项目入门案例
 - springboot_01_third : SpringBooot项目入门案例
+- springboot_02_config : SpringBooot项目配置文件
+- springboot_02_data : SpringBooot项目配置文件数据读取
+- springboot_02_file : SpringBooot项目配置文件分类
 - 
 
 
