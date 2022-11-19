@@ -1,0 +1,9 @@
+server:
+  port: 82
+  servlet:
+    context-path: /springboot
+user:
+  name: Dchuang
+  age: 24
+  tel: 15200000000
+  sex: man

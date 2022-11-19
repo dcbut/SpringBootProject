@@ -8,6 +8,7 @@
 - springboot_02_config : SpringBooot项目配置文件
 - springboot_02_data : SpringBooot项目配置文件数据读取
 - springboot_02_file : SpringBooot项目配置文件分类
+- springboot_03_jar : SpringBooot项目打包分离lib包与配置文件
 - 
 
 
