@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.dcxuexi</groupId>
+	<artifactId>springboot_03_jar</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springboot_03_jar</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- 打jar包 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<layout>ZIP</layout>
+					<includes>
+						<!-- 打包时包含核心模块依赖包，需手动指定 -->
+						<include>
+							<groupId>com.dcxuexi</groupId>
+							<artifactId>common</artifactId>
+						</include>
+						<include>
+							<groupId>non-exists</groupId>
+							<artifactId>non-exists</artifactId>
+						</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<!-- 打依赖包 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<includeScope>compile</includeScope>
+							<includeScope>runtime</includeScope>
+							<excludeTransitive>false</excludeTransitive>
+							<!-- 核心依赖的包不复制，已在根jar包内 -->
+							<excludeArtifactIds>common</excludeArtifactIds>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 打配置包 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/conf</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<!-- 为什么排除了这个文件夹，因为这是我项目放mapper.xml的地方 -->
+									<excludes>
+										<exclude>mapper</exclude>
+									</excludes>
+									<includes>
+										<include>*.properties</include>
+										<include>*.yml</include>
+										<exclude>*.yaml</exclude>
+										<include>*.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+<!--	<build>-->
+<!--		<plugins>-->
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-jar-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					&lt;!&ndash;不打入jar包的文件类型或者路径&ndash;&gt;-->
+<!--					<excludes>-->
+<!--						<exclude>*.properties</exclude>-->
+<!--						<exclude>*.yml</exclude>-->
+<!--						<exclude>*.yaml</exclude>-->
+<!--					</excludes>-->
+<!--					<archive>-->
+<!--						<manifest>-->
+<!--							&lt;!&ndash; 执行的主程序路径 &ndash;&gt;-->
+<!--							<mainClass>com.dcxuexi.Springboot03JarApplication</mainClass>-->
+<!--							&lt;!&ndash;是否要把第三方jar放到manifest的classpath中&ndash;&gt;-->
+<!--							<addClasspath>true</addClasspath>-->
+<!--							&lt;!&ndash;生成的manifest中classpath的前缀，因为要把第三方jar放到lib目录下，所以classpath的前缀是lib/&ndash;&gt;-->
+<!--							<classpathPrefix>lib/</classpathPrefix>-->
+<!--							&lt;!&ndash; 打包时 MANIFEST.MF 文件不记录的时间戳版本 &ndash;&gt;-->
+<!--							<useUniqueVersions>false</useUniqueVersions>-->
+<!--						</manifest>-->
+<!--						<manifestEntries>-->
+<!--							&lt;!&ndash; 在 Class-Path 下添加配置文件的路径 &ndash;&gt;-->
+<!--							<Class-Path>config/</Class-Path>-->
+<!--						</manifestEntries>-->
+<!--					</archive>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-dependency-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>copy</id>-->
+<!--						<phase>package</phase>-->
+<!--						<goals>-->
+<!--							<goal>copy-dependencies</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<outputDirectory>${project.build.directory}/lib/</outputDirectory>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
+
+<!--			<plugin>-->
+<!--				<artifactId>maven-resources-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>copy-resources</id>-->
+<!--						<phase>package</phase>-->
+<!--						<goals>-->
+<!--							<goal>copy-resources</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<resources>-->
+<!--								&lt;!&ndash;把配置文件打包到指定路径&ndash;&gt;-->
+<!--								<resource>-->
+<!--									<directory>src/main/resources/</directory>-->
+<!--									<includes>-->
+<!--										<include>*.properties</include>-->
+<!--										<include>*.yml</include>-->
+<!--										<exclude>*.yaml</exclude>-->
+<!--									</includes>-->
+<!--								</resource>-->
+<!--							</resources>-->
+<!--							<outputDirectory>${project.build.directory}/config</outputDirectory>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
+<!--		</plugins>-->
+<!--	</build>-->
+
+
+</project>
