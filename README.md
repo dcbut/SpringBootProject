@@ -9,6 +9,9 @@
 - springboot_02_data : SpringBooot项目配置文件数据读取
 - springboot_02_file : SpringBooot项目配置文件分类
 - springboot_03_jar : SpringBooot项目打包分离lib包与配置文件
+- springboot_04_junit : SpringBooot项目整合junit
+- springboot_04_mybatis : SpringBooot项目整合mybatis
+- springboot_04_ssm : SpringBooot项目整合SSM
 - 
 
 
