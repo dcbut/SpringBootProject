@@ -12,7 +12,11 @@
 - springboot_04_junit : SpringBooot项目整合junit
 - springboot_04_mybatis : SpringBooot项目整合mybatis
 - springboot_04_ssm : SpringBooot项目整合SSM
+- springboot_mp_01_frist : SpringBooot项目整合MyBatisPlus入门案例
 - 
+
+
+
 
 
 **代码下载地址:**
