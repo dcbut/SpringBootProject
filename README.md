@@ -13,8 +13,8 @@
 - springboot_04_mybatis : SpringBooot项目整合mybatis
 - springboot_04_ssm : SpringBooot项目整合SSM
 - springboot_mp_01_frist : SpringBooot项目整合MyBatisPlus入门案例
+- springboot_mp_02_crud : SpringBooot项目整合MyBatisPlus标准数据层开发
 - 
-
 
 
 
