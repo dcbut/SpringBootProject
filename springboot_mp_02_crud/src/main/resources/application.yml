@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://sh-cynosdbmysql-grp-qzb30b5g.sql.tencentcdb.com:20557/mybatis
+    url: jdbc:mysql://localhost:3306/mybatis
     username: root
-    password: Dchuang%2022
+    password: root
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis-plus:
   configuration:
