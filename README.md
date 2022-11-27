@@ -14,6 +14,9 @@
 - springboot_04_ssm : SpringBooot项目整合SSM
 - springboot_mp_01_frist : SpringBooot项目整合MyBatisPlus入门案例
 - springboot_mp_02_crud : SpringBooot项目整合MyBatisPlus标准数据层开发
+- springboot_mp_03_dql : SpringBooot项目整合MyBatisPlus之DQL编程控制
+- springboot_mp_04_dml : SpringBooot项目整合MyBatisPlus之DML编程控制
+- springboot_mp_05_generator : SpringBooot项目MyBatisPlus快速开发
 - 
 
 

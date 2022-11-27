@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  main:
+    banner-mode: off # 关闭SpringBoot启动图标(banner)
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #打印SQL日志到控制台
+  global-config:
+    banner: true # 关闭mybatisplus启动图标
